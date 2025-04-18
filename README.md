@@ -22,4 +22,4 @@ Header
 (Normal JS utility functions)
 
 - useState() - State variables in React
-- useEffect() -
+- useEffect() - render function in React

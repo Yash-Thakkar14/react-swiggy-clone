@@ -23,5 +23,3 @@ assets/*.jpeg
 assets/*.png
 assets/*.gif
 assets/*.svg
-
-# Remove Python-specific entries (if not needed)

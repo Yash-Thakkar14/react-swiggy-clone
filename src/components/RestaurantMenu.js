@@ -1,37 +1,32 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 import Shimmer from "./Shimmer";
 import starIcon from "../../assets/star-6-24.jpg";
 import { useParams } from "react-router-dom";
 import { MENU_API } from "../utils/constants";
 
 const RestaurantMenu = () => {
-  const [restaurantInfo, setRestaurantInfo] = useState(null);
-
   const { resId } = useParams();
-  console.log(resId);
+  const restaurantInfo = useRestaurantMenu(resId);
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const data = await fetch(
-      MENU_API + resId + "&catalog_qa=undefined&submitAction=ENTER"
-    );
-    const json = await data.json();
-    setRestaurantInfo(json?.data);
-  };
-
-  console.log(restaurantInfo);
+  //Make this below code into a custom hook
+  // const [restaurantInfo, setRestaurantInfo] = useState(null);
+  // useEffect(() => {
+  //   fetchMenu();
+  // }, []);
+  // const fetchMenu = async () => {
+  //   const data = await fetch(
+  //     MENU_API + resId + "&catalog_qa=undefined&submitAction=ENTER"
+  //   );
+  //   const json = await data.json();
+  //   setRestaurantInfo(json?.data);
+  // };
 
   return restaurantInfo === null ? (
     <Shimmer />
   ) : (
     <div className="menu-container">
       <div className="menu">
-
-          <>"hello"</>
         <div className="breadcrum">
           Home / Banglore / {restaurantInfo?.cards[2]?.card?.card?.info?.name}
         </div>
@@ -132,7 +127,7 @@ const RestaurantMenu = () => {
                     <div className="top-pick-text">
                       <div className="top-pick-text1">
                         {item?.dish?.info?.price
-                          ? item?.dish?.info?.price
+                          ? item?.dish?.info?.price / 100
                           : item?.dish?.info?.variantsV2?.pricingModels[0]
                               ?.price / 100}
                       </div>

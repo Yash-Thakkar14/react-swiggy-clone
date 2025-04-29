@@ -4,12 +4,14 @@ import Shimmer from "./Shimmer";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { SWIGGY_API } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   // local State variable
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [filteredListOfRestaurant, setFilteredListOfRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const onlineStatus = useOnlineStatus(); // Custom Hook
 
   // Normal JS variable
   //   let listOfRestaurant2 = [
@@ -88,6 +90,14 @@ const Body = () => {
       setFilteredListOfRestaurant(filteredList);
     }
   };
+
+  if (onlineStatus == false) {
+    return (
+      <h1>
+        Looks like you are offline. Please check your internet connection.
+      </h1>
+    );
+  }
 
   return listOfRestaurant.length == 0 ? (
     <Shimmer />

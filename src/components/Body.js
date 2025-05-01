@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { SWIGGY_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import WifiOffIcon from "@mui/icons-material/WifiOff";
 
 const Body = () => {
   // local State variable
@@ -93,9 +94,14 @@ const Body = () => {
 
   if (onlineStatus == false) {
     return (
-      <h1>
-        Looks like you are offline. Please check your internet connection.
-      </h1>
+      <>
+        <div className="shimmer-blur">
+          <Shimmer />
+        </div>
+        <div className="wifi-icon">
+          <WifiOffIcon style={{ color: "rgb(255, 82, 0)", fontSize: "4rem" }} />
+        </div>
+      </>
     );
   }
 

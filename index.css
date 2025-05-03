@@ -500,6 +500,7 @@
 .seperator {
   border-top: 16px solid rgba(2, 6, 12, 0.05);
   margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .user-card {
@@ -526,4 +527,72 @@
   align-items: center;
   top: 50%;
   right: 50%;
+}
+
+.dish-card {
+  padding: 4px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dish-price::before {
+  content: "₹";
+  margin-right: 0.1rem;
+}
+
+.dish-img {
+  height: 144px;
+  width: 156px;
+  border-radius: 12px;
+}
+
+.dish-name {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.45px;
+  color: rgba(2, 6, 12, 0.75);
+}
+
+.no-border-accordion {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.no-border-accordion::before {
+  background-color: transparent !important;
+}
+
+.dish-photo {
+  margin-left: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-btn {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.45px;
+  color: rgb(27, 166, 114);
+  box-shadow: rgba(40, 44, 63, 0.08) 0px 3px 8px;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgba(2, 6, 12, 0.15);
+  height: 40px;
+  border-radius: 8px;
+  width: 120px;
+  position: relative;
+  bottom: 22px;
+}
+
+.custom-text {
+  font-weight: 200;
+  font-size: 13px;
+  line-height: 17px;
+  letter-spacing: -0.33px;
+  color: rgba(2, 6, 12, 0.45);
+  margin: 0px;
+  position: relative;
+  bottom: 18px;
 }

@@ -3,11 +3,28 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 import Shimmer from "./Shimmer";
 import starIcon from "../../assets/star-6-24.jpg";
 import { useParams } from "react-router-dom";
-import { MENU_API } from "../utils/constants";
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+} from "@mui/material";
+import MenuItems from "./MenuItems";
+import { useState } from "react";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const restaurantInfo = useRestaurantMenu(resId);
+  const [expandedAccordion, setExpandedAccordion] = useState(false);
+  const [expandedInnerAccordion, setExpandedInnerAccordion] = useState(false);
+
+  const handleAccordionChange = (index) => {
+    setExpandedAccordion((prev) => (prev === index ? null : index));
+  };
+  const handleInnerAccordionChange = (index) => {
+    setExpandedInnerAccordion((prev) => (prev === index ? null : index));
+  };
 
   //Make this below code into a custom hook
   // const [restaurantInfo, setRestaurantInfo] = useState(null);
@@ -140,11 +157,48 @@ const RestaurantMenu = () => {
           </div>
         </div>
       )}
-      <div className="seperator"></div>
       <div className="menu-sections">
-        {console.log(
-          restaurantInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-        )}
+        {restaurantInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+          ?.slice(2, -2)
+          ?.map((section, index) => (
+            <>
+              <div className="seperator"></div>
+              <Accordion
+                key={index}
+                expanded={expandedAccordion === index}
+                onChange={() => handleAccordionChange(index)}
+                className="no-border-accordion"
+              >
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography>{section.card?.card?.title}</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  {section.card?.card?.itemCards ? (
+                    <MenuItems itemCards={section.card?.card?.itemCards} />
+                  ) : (
+                    section.card?.card?.categories.map(
+                      (subsection, subindex) => (
+                        <Accordion
+                          key={subindex}
+                          expanded={expandedInnerAccordion === subindex}
+                          onChange={() => handleInnerAccordionChange(subindex)}
+                          className="no-border-accordion"
+                        >
+                          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                            <Typography>{subsection?.title}</Typography>
+                          </AccordionSummary>
+                          <AccordionDetails>
+                            <MenuItems itemCards={subsection?.itemCards} />
+                          </AccordionDetails>
+                        </Accordion>
+                      )
+                    )
+                  )}
+                  <MenuItems itemCards={section.card?.card?.itemCards} />
+                </AccordionDetails>
+              </Accordion>
+            </>
+          ))}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ const Body = () => {
   const [filteredListOfRestaurant, setFilteredListOfRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus(); // Custom Hook
-
+  console.log(listOfRestaurant);
   // Normal JS variable
   //   let listOfRestaurant2 = [
   //     {
@@ -66,6 +66,8 @@ const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   // resList API call to swiggy live endpoint
   const fetchData = async () => {
@@ -156,6 +158,11 @@ const Body = () => {
             to={"/restaurants/" + restaurant?.info?.id}
             key={restaurant?.info?.id}
           >
+            {/** here make logiv to give different card if promoted */}
+            {/* {resPromoted ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : ( */
+            /* )} */}
             <RestaurantCard resData={restaurant} />
           </Link>
         ))}

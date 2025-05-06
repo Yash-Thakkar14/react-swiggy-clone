@@ -170,7 +170,12 @@ const RestaurantMenu = () => {
                 className="no-border-accordion"
               >
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  <Typography>{section.card?.card?.title}</Typography>
+                  <Typography>
+                    {section.card?.card?.title}
+                    {section?.card?.card?.itemCards
+                      ? " (" + section?.card?.card?.itemCards.length + ")"
+                      : " (" + section.card?.card?.categories?.length + ")"}
+                  </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   {section.card?.card?.itemCards ? (

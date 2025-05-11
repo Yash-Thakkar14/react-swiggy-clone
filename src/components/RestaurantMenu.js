@@ -124,7 +124,7 @@ const RestaurantMenu = () => {
           )}
         </div>
       </div>
-      <div className="menu-section-header">MENU</div>
+      <div className="menu-section-header">MENU 🍔</div>
       {restaurantInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]
         ?.card?.card?.title == "Top Picks" && (
         <div className="top-picks-container">
@@ -190,7 +190,7 @@ const RestaurantMenu = () => {
                           className="no-border-accordion"
                         >
                           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                            <Typography>{subsection?.title}</Typography>
+                            <Typography>{subsection?.title} </Typography>
                           </AccordionSummary>
                           <AccordionDetails>
                             <MenuItems itemCards={subsection?.itemCards} />

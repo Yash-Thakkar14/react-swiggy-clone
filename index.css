@@ -584,6 +584,7 @@
   width: 120px;
   position: relative;
   bottom: 22px;
+  cursor: pointer;
 }
 
 .custom-text {

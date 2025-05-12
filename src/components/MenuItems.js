@@ -7,7 +7,7 @@ const MenuItems = (props) => {
       {itemCards && itemCards.length > 0 ? (
         itemCards.map((item) => {
           return (
-            <>
+            <div key={item?.card?.info?.id}>
               <div className="dish-card" key={item?.card?.info?.id}>
                 <div className="description">
                   <div className="dish-name">{item?.card?.info?.name}</div>
@@ -36,7 +36,7 @@ const MenuItems = (props) => {
                 </div>
               </div>
               <hr></hr>
-            </>
+            </div>
           );
         })
       ) : (

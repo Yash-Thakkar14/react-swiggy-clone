@@ -13,7 +13,6 @@ const Body = () => {
   const [filteredListOfRestaurant, setFilteredListOfRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus(); // Custom Hook
-  console.log(listOfRestaurant);
   // Normal JS variable
   //   let listOfRestaurant2 = [
   //     {
@@ -73,7 +72,6 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(SWIGGY_API);
     const json = await data.json();
-    console.log(json);
     setListOfRestaurant(
       // Optional Chaining
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants

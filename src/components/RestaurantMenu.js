@@ -148,7 +148,7 @@ const RestaurantMenu = () => {
                           : item?.dish?.info?.variantsV2?.pricingModels[0]
                               ?.price / 100}
                       </div>
-                      <div></div>
+                      <button className="add-btn">ADD</button>
                     </div>
                   </div>
                 );
@@ -161,7 +161,7 @@ const RestaurantMenu = () => {
         {restaurantInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
           ?.slice(2, -2)
           ?.map((section, index) => (
-            <>
+            <div key={index}>
               <div className="seperator"></div>
               <Accordion
                 key={index}
@@ -202,7 +202,7 @@ const RestaurantMenu = () => {
                   <MenuItems itemCards={section.card?.card?.itemCards} />
                 </AccordionDetails>
               </Accordion>
-            </>
+            </div>
           ))}
       </div>
     </div>

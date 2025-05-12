@@ -1,22 +1,44 @@
 import React from "react";
 import { CDN_LINK } from "../utils/constants";
+import starIcon from "../../assets/star-6-24.jpg";
 
 const RestaurantCard = (props) => {
   const { resData } = props; //other way to destructure
-  const { name, cuisines, avgRating, costForTwo, sla, cloudinaryImageId } =
-    resData?.info;
+  const {
+    name,
+    cuisines,
+    avgRating,
+    cloudinaryImageId,
+    aggregatedDiscountInfoV3,
+    areaName,
+    sla,
+  } = resData?.info;
   return (
     <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
-      <img
-        className="res-logo"
-        src={CDN_LINK + cloudinaryImageId}
-        alt="res-logo"
-      />
-      <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRating} stars</h4>
-      <h4>{costForTwo}</h4>
-      <h4>{sla.deliveryTime} mins</h4>
+      <div className="res-logo-wrapper">
+        <div className="res-logo-wrapper3">
+          <img
+            className="res-logo"
+            src={CDN_LINK + cloudinaryImageId}
+            alt="res-logo"
+          />
+          {aggregatedDiscountInfoV3?.header && (
+            <div className="res-logo-text">
+              {`${aggregatedDiscountInfoV3.header} `}
+              {aggregatedDiscountInfoV3?.subHeader}
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="res-logo-content">
+        <div>{name}</div>
+        <div>
+          <img src={starIcon} className="rating-icon" alt="rating-icon" />
+          {`${avgRating} • ${sla?.slaString}`}
+        </div>
+        <div>{cuisines.join(", ")}</div>
+        <div>{areaName}</div>
+      </div>
     </div>
   );
 };

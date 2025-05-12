@@ -74,26 +74,105 @@
 }
 
 .res-card {
-  width: 224px;
-  padding: 5px;
-  margin: 5px;
+  width: 328px;
   color: black;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  position: relative;
 }
 
 .res-card:hover {
-  border: 1px solid black;
-  cursor: pointer;
+  transform: scale(1.05);
 }
 
 .res-logo {
   width: 100%;
-  height: auto;
-  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.3);
+  height: 100%;
+  object-fit: cover;
+  border-style: none;
+}
+
+.res-logo-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.res-logo-text {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0px 12px 8px 12px;
+  border-radius: 4px;
+  background: linear-gradient(rgba(27, 30, 36, 0) 0%, rgb(27, 30, 36) 84.21%);
+  width: 100%;
+}
+
+.res-logo-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.res-logo-content > div:first-child {
+  margin: 0px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.45px;
+  color: rgba(2, 6, 12, 0.92);
+  overflow: hidden;
+  width: 100%;
+  overflow-wrap: break-word;
+}
+
+.res-logo-content > div:nth-child(2) {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: -0.4px;
+  color: rgba(2, 6, 12, 0.92);
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  overflow-wrap: break-word;
+  align-items: center;
+}
+
+.res-logo-wrapper2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.res-logo-wrapper2::before {
+  content: "";
+  height: 0px;
+  display: block;
+  padding-top: calc(66.6667%);
+}
+
+.res-logo-wrapper3 {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
 }
 
 .res-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
 }
 
 .filter-btn {
@@ -137,6 +216,7 @@
 
 .filter {
   display: flex;
+  margin: 0px 18px;
 }
 
 .error {
@@ -480,7 +560,9 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0 16px 16px;
+  padding: 0px 16px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .top-pick-text1 {
@@ -596,4 +678,10 @@
   margin: 0px;
   position: relative;
   bottom: 18px;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-items > ul {
+    font-size: 12px;
+  }
 }

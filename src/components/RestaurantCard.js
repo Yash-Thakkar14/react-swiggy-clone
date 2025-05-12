@@ -14,7 +14,7 @@ const RestaurantCard = (props) => {
     sla,
   } = resData?.info;
   return (
-    <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
+    <div className="res-card">
       <div className="res-logo-wrapper">
         <div className="res-logo-wrapper3">
           <img

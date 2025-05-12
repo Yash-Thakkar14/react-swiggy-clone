@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { SWIGGY_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -78,6 +77,27 @@ const Body = () => {
     );
   };
 
+  useEffect(() => {
+    // Create an Intersection Observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible"); // Add the 'visible' class when in viewport
+          }
+        });
+      },
+      { threshold: 0.1 } // Trigger when 10% of the card is visible
+    );
+
+    // Observe all restaurant cards
+    const cards = document.querySelectorAll(".res-card");
+    cards.forEach((card) => observer.observe(card));
+
+    // Cleanup observer on component unmount
+    return () => observer.disconnect();
+  }, [listOfRestaurant]);
+
   //Conditional Rendering
   //   if (listOfRestaurant.length == 0) {
   //     return <Shimmer />; // Add loading component following shimmer UI;
@@ -105,7 +125,7 @@ const Body = () => {
     );
   }
 
-  return listOfRestaurant.length == 0 ? (
+  return listOfRestaurant?.length == 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -147,6 +167,7 @@ const Body = () => {
           Top Rated Restaurant
         </button>
       </div>
+      <div className="sec-header">Top restaurant chains in Bangalore</div>
       <div className="res-container">
         {(searchText.length == 0
           ? listOfRestaurant

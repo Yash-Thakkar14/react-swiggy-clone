@@ -170,8 +170,8 @@ const Body = () => {
       <div className="sec-header">Top restaurant chains in Bangalore</div>
       <div className="res-container">
         {(searchText.length == 0
-          ? listOfRestaurant
-          : filteredListOfRestaurant
+          ? listOfRestaurant || []
+          : filteredListOfRestaurant || []
         ).map((restaurant) => (
           <Link
             to={"/restaurants/" + restaurant?.info?.id}

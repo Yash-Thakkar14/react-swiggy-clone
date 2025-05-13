@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import WifiIcon from "@mui/icons-material/Wifi";
 import WifiOffIcon from "@mui/icons-material/WifiOff";
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   // if no [] ==> useEffect will run on every render
   // if [empty] ==> useEffect will run only on initial render once
   // if [btnName] ==> useEffect will run everytime btnName changes
@@ -20,7 +23,17 @@ const Header = () => {
       <div className="logo-container">
         <img className="logo" src={LOGO_URL} />
       </div>
-      <div className="nav-items">
+
+      <div className="hamburger-menu">
+        <button
+          className="menu-toggle"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <CloseRoundedIcon /> : <MenuRoundedIcon />}
+        </button>
+      </div>
+
+      <div className={`nav-items ${isMenuOpen ? "open" : ""}`}>
         <ul>
           <li>
             <div>Online Status: </div>

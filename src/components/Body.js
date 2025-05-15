@@ -125,6 +125,8 @@ const Body = () => {
     );
   }
 
+  console.log("List of Restaurant 🍲: ", listOfRestaurant);
+
   return listOfRestaurant?.length == 0 ? (
     <Shimmer />
   ) : (

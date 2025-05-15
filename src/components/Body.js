@@ -179,11 +179,8 @@ const Body = () => {
             to={"/restaurants/" + restaurant?.info?.id}
             key={restaurant?.info?.id}
           >
-            {/** here make logiv to give different card if promoted */}
-            {/* {resPromoted ? (
-              <RestaurantCardPromoted resData={restaurant} />
-            ) : ( */
-            /* )} */}
+            {/** here make logiv to give different card if promoted {resPromoted ? (
+              <RestaurantCardPromoted resData={restaurant} />) : ( )} */}
             <RestaurantCard resData={restaurant} />
           </Link>
         ))}

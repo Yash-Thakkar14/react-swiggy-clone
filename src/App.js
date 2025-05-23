@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import "../index.css";
 import RestaurantMenu from "./components/RestaurantMenu";
+import UserContext from "./utils/UserContext";
 // import Grocery from "./components/Grocery";
 
 // not using keys (not acceptable) <<<< index as key (last resort) <<<< unique id (best practice)
@@ -21,11 +22,23 @@ import RestaurantMenu from "./components/RestaurantMenu";
 const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState("Yash Thakkar");
+
+  useEffect(() => {
+    //API call to set UserName (Authentication)
+    const data = {
+      name: "Yash Thakkar",
+    };
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div className="app">
-      <Header />
-      <Outlet /> {/* This is where the child routes will be rendered */}
-    </div>
+    <UserContext.Provider value={{ loggedInUser: "Yash Thakkar", setUserName }}>
+      <div className="app">
+        <Header />
+        <Outlet /> {/* This is where the child routes will be rendered */}
+      </div>
+    </UserContext.Provider>
   );
 };
 

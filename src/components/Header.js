@@ -1,6 +1,7 @@
 import React from "react";
 import { LOGO_URL } from "../utils/constants";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import UserContext from "../utils/UserContext";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import WifiIcon from "@mui/icons-material/Wifi";
@@ -14,6 +15,7 @@ const Header = () => {
   // if no [] ==> useEffect will run on every render
   // if [empty] ==> useEffect will run only on initial render once
   // if [btnName] ==> useEffect will run everytime btnName changes
+  const data = useContext(UserContext);
 
   const onlineStatus = useOnlineStatus(); // Custom Hook
   useEffect(() => {}, []);
@@ -71,6 +73,14 @@ const Header = () => {
             <Link className="link-style" to="/cart">
               Cart
             </Link>
+          </li>
+          <li>
+            <Link className="link-style" to="/cart">
+              Cart
+            </Link>
+          </li>
+          <li>
+            <Link className="link-style">{data?.loggedInUser}</Link>
           </li>
           <button
             className="login"

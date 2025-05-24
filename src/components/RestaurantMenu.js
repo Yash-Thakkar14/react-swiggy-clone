@@ -30,9 +30,10 @@ const RestaurantMenu = () => {
 
   const dispatch = useDispatch();
 
-  const handleAddItem = () => {
+  const handleAddItem = (item) => {
     //Dispatch an action
-    dispatch(addItem("pizza"));
+    dispatch(addItem(item?.title));
+    //item?.title
   };
 
   //Make this below code into a custom hook
@@ -157,7 +158,10 @@ const RestaurantMenu = () => {
                           : item?.dish?.info?.variantsV2?.pricingModels[0]
                               ?.price / 100}
                       </div>
-                      <button className="add-btn" onClick={handleAddItem}>
+                      <button
+                        className="add-btn"
+                        onClick={() => handleAddItem(item)}
+                      >
                         ADD
                       </button>
                     </div>

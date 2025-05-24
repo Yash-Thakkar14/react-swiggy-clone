@@ -710,6 +710,62 @@
   overflow-wrap: break-word;
 }
 
+.empty-cart-wrapper {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+  background: #fff;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.empty-cart-img {
+  width: 271px;
+  height: 256px;
+  background-image: url(https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+}
+
+.empty-cart-text1 {
+  margin-top: 24px;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(2, 6, 12, 0.8);
+}
+
+.empty-cart-text2 {
+  margin-top: 8px;
+  color: rgba(2, 6, 12, 0.6);
+}
+
+.empty-cart-btn {
+  margin-top: 30px;
+  padding: 11px 20px;
+  text-transform: uppercase;
+  background-color: #ff5200;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  font-size: 15px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 0.8s cubic-bezier(0.2, 1, 0.2, 1),
+    -webkit-transform 0.8s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
 @media only screen and (max-width: 768px) {
   .nav-items > ul {
     font-size: 12px;

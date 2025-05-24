@@ -7,9 +7,10 @@ const MenuItems = (props) => {
 
   const dispatch = useDispatch();
 
-  const handleAddItem = () => {
+  const handleAddItem = (item) => {
     //Dispatch an action
-    dispatch(addItem("pizza"));
+    dispatch(addItem(item?.card?.info?.name));
+    //item?.card?.info?.name
   };
 
   return (
@@ -41,7 +42,10 @@ const MenuItems = (props) => {
                       item?.card?.info?.imageId
                     }
                   />
-                  <button className="add-btn" onClick={handleAddItem}>
+                  <button
+                    className="add-btn"
+                    onClick={() => handleAddItem(item)}
+                  >
                     ADD
                   </button>
                   <p className="custom-text">Customisable</p>

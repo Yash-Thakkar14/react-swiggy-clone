@@ -19,6 +19,7 @@ const Header = () => {
   const data = useContext(UserContext);
   //Selector
   const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
   const onlineStatus = useOnlineStatus(); // Custom Hook
 
   return (

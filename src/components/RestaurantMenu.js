@@ -12,6 +12,8 @@ import {
 import MenuItems from "./MenuItems";
 import { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -24,6 +26,13 @@ const RestaurantMenu = () => {
   };
   const handleInnerAccordionChange = (index) => {
     setExpandedInnerAccordion((prev) => (prev === index ? null : index));
+  };
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = () => {
+    //Dispatch an action
+    dispatch(addItem("pizza"));
   };
 
   //Make this below code into a custom hook
@@ -148,7 +157,9 @@ const RestaurantMenu = () => {
                           : item?.dish?.info?.variantsV2?.pricingModels[0]
                               ?.price / 100}
                       </div>
-                      <button className="add-btn">ADD</button>
+                      <button className="add-btn" onClick={handleAddItem}>
+                        ADD
+                      </button>
                     </div>
                   </div>
                 );

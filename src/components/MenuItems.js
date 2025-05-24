@@ -1,7 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const MenuItems = (props) => {
   const { itemCards } = props;
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = () => {
+    //Dispatch an action
+    dispatch(addItem("pizza"));
+  };
+
   return (
     <div>
       {itemCards && itemCards.length > 0 ? (
@@ -31,7 +41,9 @@ const MenuItems = (props) => {
                       item?.card?.info?.imageId
                     }
                   />
-                  <button className="add-btn">ADD</button>
+                  <button className="add-btn" onClick={handleAddItem}>
+                    ADD
+                  </button>
                   <p className="custom-text">Customisable</p>
                 </div>
               </div>

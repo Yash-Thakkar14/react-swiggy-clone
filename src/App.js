@@ -9,16 +9,17 @@ import Error from "./components/Error";
 import "../index.css";
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
-// import Grocery from "./components/Grocery";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 // not using keys (not acceptable) <<<< index as key (last resort) <<<< unique id (best practice)
-
 // Chunking
 // Code Splitting
 // Dynamic Bundling
 // Lazy Loading
 // On Demand Loading
 // Dynamic Loading
+
 const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
@@ -33,12 +34,16 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedInUser: "Yash Thakkar", setUserName }}>
-      <div className="app">
-        <Header />
-        <Outlet /> {/* This is where the child routes will be rendered */}
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider
+        value={{ loggedInUser: "Yash Thakkar", setUserName }}
+      >
+        <div className="app">
+          <Header />
+          <Outlet /> {/* This is where the child routes will be rendered */}
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 

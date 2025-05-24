@@ -8,6 +8,7 @@ import WifiIcon from "@mui/icons-material/Wifi";
 import WifiOffIcon from "@mui/icons-material/WifiOff";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
@@ -16,9 +17,9 @@ const Header = () => {
   // if [empty] ==> useEffect will run only on initial render once
   // if [btnName] ==> useEffect will run everytime btnName changes
   const data = useContext(UserContext);
-
+  //Selector
+  const cartItems = useSelector((store) => store.cart.items);
   const onlineStatus = useOnlineStatus(); // Custom Hook
-  useEffect(() => {}, []);
 
   return (
     <div className="header">
@@ -71,12 +72,7 @@ const Header = () => {
           </li>
           <li>
             <Link className="link-style" to="/cart">
-              Cart
-            </Link>
-          </li>
-          <li>
-            <Link className="link-style" to="/cart">
-              Cart
+              Cart - ({cartItems.length})
             </Link>
           </li>
           <li>

@@ -713,6 +713,7 @@
 @media only screen and (max-width: 768px) {
   .nav-items > ul {
     font-size: 12px;
+    padding: 0px;
   }
   .res-container {
     display: flex;

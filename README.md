@@ -10,7 +10,8 @@ Header
 - Nav Items
   Body
 - Search
-- RestaurantContainer - Restaurant Card - Img - Name of Res, Rating , cuisine , del time
+- RestaurantContainer
+- Restaurant Card
   Footer
 - Copyright
 - Links
@@ -23,3 +24,12 @@ Header
 
 - useState() - State variables in React
 - useEffect() - render function in React
+
+# Redux Toolkit
+
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- Conntect our store to our app
+- Slice ( cartSlice )
+- dispatch ( action )
+- Selector

@@ -766,6 +766,31 @@
     -webkit-transform 0.8s cubic-bezier(0.2, 1, 0.2, 1);
 }
 
+.cart-header {
+  text-align: center;
+}
+
+.cart-items-wrapper {
+  max-width: 800px;
+  min-height: 800px;
+  margin: 20px auto 0;
+}
+.cart-clr-btn {
+  color: white;
+  background: black;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 5px;
+  align-self: center;
+  cursor: pointer;
+}
+
+.cart-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media only screen and (max-width: 768px) {
   .nav-items > ul {
     font-size: 12px;

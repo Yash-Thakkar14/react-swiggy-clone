@@ -3,13 +3,13 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
 
 const MenuItems = (props) => {
-  const { itemCards } = props;
+  const { itemCards, isCartPage } = props;
 
   const dispatch = useDispatch();
 
   const handleAddItem = (item) => {
     //Dispatch an action
-    dispatch(addItem(item?.card?.info?.name));
+    dispatch(addItem(item));
     //item?.card?.info?.name
   };
 
@@ -17,6 +17,48 @@ const MenuItems = (props) => {
     <div>
       {itemCards && itemCards.length > 0 ? (
         itemCards.map((item) => {
+          if (item?.type === "TopCarousel") {
+            return (
+              <div key={item?.dish?.info?.id}>
+                <div className="dish-card" key={item?.dish?.info?.id}>
+                  <div className="description">
+                    <div className="dish-name">{item?.dish?.info?.name}</div>
+                    <div className="dish-price">
+                      {item?.dish?.info?.price / 100}
+                    </div>
+                    <div>
+                      {item?.dish?.info?.ratings &&
+                        item?.dish?.info?.ratings?.aggregatedRating?.rating +
+                          "(" +
+                          item?.dish?.info?.ratings?.aggregatedRating
+                            ?.ratingCountV2 +
+                          ")"}
+                    </div>
+                    <div>{item?.dish?.info?.description}</div>
+                  </div>{" "}
+                  <div className="dish-photo">
+                    <img
+                      className="dish-img"
+                      src={
+                        "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/" +
+                        item?.dish?.info?.imageId
+                      }
+                    />
+                    {!isCartPage && (
+                      <button
+                        className="add-btn"
+                        onClick={() => handleAddItem(item)}
+                      >
+                        ADD
+                      </button>
+                    )}
+                    {!isCartPage && <p className="custom-text">Customisable</p>}
+                  </div>
+                </div>
+                <hr></hr>
+              </div>
+            );
+          }
           return (
             <div key={item?.card?.info?.id}>
               <div className="dish-card" key={item?.card?.info?.id}>
@@ -33,7 +75,7 @@ const MenuItems = (props) => {
                       ")"}
                   </div>
                   <div>{item?.card?.info?.description}</div>
-                </div>
+                </div>{" "}
                 <div className="dish-photo">
                   <img
                     className="dish-img"
@@ -42,13 +84,15 @@ const MenuItems = (props) => {
                       item?.card?.info?.imageId
                     }
                   />
-                  <button
-                    className="add-btn"
-                    onClick={() => handleAddItem(item)}
-                  >
-                    ADD
-                  </button>
-                  <p className="custom-text">Customisable</p>
+                  {!isCartPage && (
+                    <button
+                      className="add-btn"
+                      onClick={() => handleAddItem(item)}
+                    >
+                      ADD
+                    </button>
+                  )}
+                  {!isCartPage && <p className="custom-text">Customisable</p>}
                 </div>
               </div>
               <hr></hr>

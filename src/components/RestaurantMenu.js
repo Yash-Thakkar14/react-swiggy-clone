@@ -32,7 +32,7 @@ const RestaurantMenu = () => {
 
   const handleAddItem = (item) => {
     //Dispatch an action
-    dispatch(addItem(item?.title));
+    dispatch(addItem(item));
     //item?.title
   };
 

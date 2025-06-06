@@ -1,6 +1,6 @@
 # react-swiggy-clone
 
-Swiggy website clone using live APIs on REACT
+Swiggy website clone using live APIs
 
 # FOOD APP
 
@@ -33,3 +33,15 @@ Header
 - Slice ( cartSlice )
 - dispatch ( action )
 - Selector
+
+# Testing
+
+- Unit Testing - testing in isolation.
+- Integration Testing - testing communication between components.
+- End to End Testing - e2e testing , full flows from start to end.
+
+# Setting Up RTL
+
+- Install RTL
+- Install Jest
+- Installed Babel dependencies and added config to .babelrc file

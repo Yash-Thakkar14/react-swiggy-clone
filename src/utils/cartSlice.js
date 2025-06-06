@@ -9,8 +9,8 @@ const cartSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
       // Vanilla Redux ==> DON'T MuTATE STATE , returning was mandatory
-      // mutating the state here , no need to return anything
-      //RTK - either mutate the state or return a new state
+      // Mutating the state here , no need to return anything
+      // RTK - either mutate the state or return a new state
       state.items.push(action.payload);
     },
     removeItem: (state) => {

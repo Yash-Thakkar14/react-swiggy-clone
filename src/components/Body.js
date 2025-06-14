@@ -77,7 +77,17 @@ const Body = () => {
     );
   };
 
+  // Helper to get the current list of displayed restaurants
+  const getDisplayedRestaurants = () =>
+    searchText.length === 0
+      ? listOfRestaurant || []
+      : filteredListOfRestaurant || [];
+
   useEffect(() => {
+    // Remove 'visible' class from all cards before observing
+    const allCards = document.querySelectorAll(".res-card");
+    allCards.forEach((card) => card.classList.remove("visible"));
+
     // Create an Intersection Observer
     const observer = new IntersectionObserver(
       (entries) => {
@@ -90,13 +100,13 @@ const Body = () => {
       { threshold: 0.1 } // Trigger when 10% of the card is visible
     );
 
-    // Observe all restaurant cards
+    // Observe all currently displayed restaurant cards
     const cards = document.querySelectorAll(".res-card");
     cards.forEach((card) => observer.observe(card));
 
     // Cleanup observer on component unmount
     return () => observer.disconnect();
-  }, [listOfRestaurant]);
+  }, [listOfRestaurant, filteredListOfRestaurant, searchText]);
 
   //Conditional Rendering
   //   if (listOfRestaurant.length == 0) {
@@ -170,7 +180,7 @@ const Body = () => {
         </button>
       </div>
       <div className="sec-header">Top restaurant chains in Bangalore</div>
-      <div className="res-container">
+      <div className="res-container" data-testid="res-card">
         {(searchText.length == 0
           ? listOfRestaurant || []
           : filteredListOfRestaurant || []

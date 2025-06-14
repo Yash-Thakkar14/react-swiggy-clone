@@ -4,6 +4,7 @@ import starIcon from "../../assets/star-6-24.jpg";
 
 const RestaurantCard = (props) => {
   const { resData } = props; //other way to destructure
+  console.log("resData", resData);
   const {
     name,
     cuisines,

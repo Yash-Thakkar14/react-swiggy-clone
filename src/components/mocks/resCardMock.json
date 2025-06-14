@@ -1,0 +1,67 @@
+{
+  "info": {
+    "id": "14552",
+    "name": "Pizza Hut",
+    "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2025/6/9/4d91ada2-0375-46af-a7c8-bf07604fd2c8_14552.JPG",
+    "locality": "Airport Road",
+    "areaName": "Murugeshpalya",
+    "costForTwo": "₹300 for two",
+    "cuisines": ["Pizzas"],
+    "avgRating": 4.3,
+    "parentId": "721",
+    "avgRatingString": "4.3",
+    "totalRatingsString": "22K+",
+    "sla": {
+      "deliveryTime": 32,
+      "lastMileTravel": 4.9,
+      "serviceability": "SERVICEABLE",
+      "slaString": "30-35 mins",
+      "lastMileTravelString": "4.9 km",
+      "iconType": "ICON_TYPE_EMPTY"
+    },
+    "availability": {
+      "nextCloseTime": "2025-06-14 07:00:00",
+      "opened": true
+    },
+    "badges": {},
+    "isOpen": true,
+    "type": "F",
+    "badgesV2": {
+      "entityBadges": {
+        "imageBased": {},
+        "textBased": {},
+        "textExtendedBadges": {}
+      }
+    },
+    "aggregatedDiscountInfoV3": {
+      "header": "ITEMS",
+      "subHeader": "AT ₹79"
+    },
+    "differentiatedUi": {
+      "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+      "differentiatedUiMediaDetails": {
+        "lottie": {},
+        "video": {}
+      }
+    },
+    "reviewsSummary": {},
+    "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+    "restaurantOfferPresentationInfo": {},
+    "externalRatings": {
+      "aggregatedRating": {
+        "rating": "4.4",
+        "ratingCount": "3.2K+"
+      },
+      "source": "GOOGLE",
+      "sourceIconImageId": "v1704440323/google_ratings/rating_google_tag"
+    },
+    "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+  },
+  "analytics": {
+    "context": "seo-data-5fe8e147-9fbf-4f51-a2a8-d46c27854e18"
+  },
+  "cta": {
+    "link": "https://www.swiggy.com/city/bangalore/pizza-hut-airport-road-murugeshpalya-rest14552",
+    "type": "WEBLINK"
+  }
+}

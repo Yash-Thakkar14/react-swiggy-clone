@@ -159,6 +159,7 @@ const RestaurantMenu = () => {
                               ?.price / 100}
                       </div>
                       <button
+                        data-testid="add-btn"
                         className="add-btn"
                         onClick={() => handleAddItem(item)}
                       >

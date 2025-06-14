@@ -60,7 +60,7 @@ const MenuItems = (props) => {
             );
           }
           return (
-            <div key={item?.card?.info?.id}>
+            <div key={item?.card?.info?.id} data-testid="menu-item">
               <div className="dish-card" key={item?.card?.info?.id}>
                 <div className="description">
                   <div className="dish-name">{item?.card?.info?.name}</div>

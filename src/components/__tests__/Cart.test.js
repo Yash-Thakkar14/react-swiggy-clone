@@ -39,8 +39,7 @@ it("should render RestaurantMenu component", async () => {
   expect(screen.getByText("Cart - (1)")).toBeInTheDocument();
 
   fireEvent.click(addBtns[1]);
-
   expect(screen.getByText("Cart - (2)")).toBeInTheDocument();
 
-  expect(screen.getAllByTestId("menu-item")).toBe(2);
+  expect(screen.getAllByTestId("menu-item").length).toBe(2);
 });

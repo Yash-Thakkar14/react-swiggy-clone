@@ -19,7 +19,7 @@ const MenuItems = (props) => {
         itemCards.map((item) => {
           if (item?.type === "TopCarousel") {
             return (
-              <div key={item?.dish?.info?.id}>
+              <div key={item?.dish?.info?.id} data-testid="menu-item">
                 <div className="dish-card" key={item?.dish?.info?.id}>
                   <div className="description">
                     <div className="dish-name">{item?.dish?.info?.name}</div>
@@ -47,6 +47,7 @@ const MenuItems = (props) => {
                     {!isCartPage && (
                       <button
                         className="add-btn"
+                        data-testid="add-btn"
                         onClick={() => handleAddItem(item)}
                       >
                         ADD
@@ -87,6 +88,7 @@ const MenuItems = (props) => {
                   {!isCartPage && (
                     <button
                       className="add-btn"
+                      data-testid="add-btn"
                       onClick={() => handleAddItem(item)}
                     >
                       ADD
